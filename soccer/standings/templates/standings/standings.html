@@ -1,0 +1,18 @@
+{%extends 'base.html'%}
+{%block body%}
+<table>
+    <tbody>
+        <tr>
+            <th>Name</th>
+            <th>Score</th>
+        </tr>
+        {%for owner in owners%}
+        <tr>
+            <td><a href="{{owner.get_absolute_url}}">{{owner.name}}</a></td>
+            <td>{{owner.total_score}}</td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+<h2>{{message}}</h2>
+{%endblock%}

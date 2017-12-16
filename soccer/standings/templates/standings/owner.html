@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+{%block body%}
+<h2>{{owner.name}}</h2>
+<table>
+    <tbody>
+        <tr>
+            <th>Name</th>
+            <th>Score</th>
+            <th>Owner</th>
+        </tr>
+        {%for team in teams_you%}
+        <tr>
+            <th>{{team.name}}</td>
+            <td>{{team.score}}</td>
+            <td><a href="{% url 'standings:drop' owner.pk team.pk%}">- Click to drop</a></td>
+        </tr>
+        {%endfor%}
+        {%for team in teams_none%}
+        <tr>
+            <th>{{team.name}}</td>
+            <td>{{team.score}}</td>
+            <td><a href="{% url 'standings:add' owner.pk team.pk%}">+ Click to add</a></td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+<h2>{{message}}</h2>
+{%endblock%}
