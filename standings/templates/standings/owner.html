@@ -10,15 +10,17 @@
         </tr>
         {%for team in teams_you%}
         <tr>
-            <th>{{team.name}}</td>
+            <td>{{team.name}}</td>
             <td>{{team.score}}</td>
             <td><input type="checkbox" form="manage" name="_{{team.pk}}" id="{{team.pk}}"><label for="{{team.pk}}">- Drop?</label></td>
         </tr>
         {%endfor%}
-        <hr>
+        <tr>
+            <td></td><td></td><td></td>
+        </tr>
         {%for team in teams_none%}
         <tr>
-            <th>{{team.name}}</td>
+            <td>{{team.name}}</td>
             <td>{{team.score}}</td>
             <td><input type="checkbox" form="manage" name="_{{team.pk}}" id="{{team.pk}}"><label for="{{team.pk}}">+ Add?</label></td>
         </tr>
