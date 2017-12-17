@@ -29,6 +29,7 @@ def standings(request):
                         team.losses = tds[4].text
                         team.goal_diff = tds[7].text
                         team.save()
+            return redirect('standings:standings')
         else:
             message = 'Please enter the correct password'
     owners = Owner.objects.annotate(
