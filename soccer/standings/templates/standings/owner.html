@@ -12,17 +12,22 @@
         <tr>
             <th>{{team.name}}</td>
             <td>{{team.score}}</td>
-            <td><a href="{% url 'standings:drop' owner.pk team.pk%}">- Click to drop</a></td>
+            <td><input type="checkbox" form="manage" name="{{team.pk}}" id="{{team.pk}}"><label for="{{team.pk}}">- Drop?</label></td>
         </tr>
         {%endfor%}
         {%for team in teams_none%}
         <tr>
             <th>{{team.name}}</td>
             <td>{{team.score}}</td>
-            <td><a href="{% url 'standings:add' owner.pk team.pk%}">+ Click to add</a></td>
+            <td><input type="checkbox" form="manage" name="{{team.pk}}" id="{{team.pk}}"><label for="{{team.pk}}">- Add?</label></td>
         </tr>
         {%endfor%}
     </tbody>
 </table>
 <h2>{{message}}</h2>
+<form action="{% url 'standings:manage' %}" id="manage" method='post'>
+    <input type="password" name="password" placeholder="Password" />
+    {%csrf_token%}
+    <input type="submit" value="Update Standings" />
+</form>
 {%endblock%}

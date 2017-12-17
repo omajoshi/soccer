@@ -3,8 +3,3 @@
 <a href="{%url 'standings:standings'%}">Home</a>
 {%block body%}
 {%endblock%}
-<form action="{% url 'standings:standings' %}" method='post'>
-    <input type="password" name="password" placeholder="Password" />
-    {%csrf_token%}
-    <input type="submit" value="Update Standings" />
-</form>

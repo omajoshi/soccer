@@ -45,16 +45,15 @@ def owner_page(request, pk):
     teams_none = teams.filter(owner=None)
     return render(request, 'standings/owner.html', {'teams_you': teams_you, 'teams_none': teams_none, 'owner': owner})
 
-def add(request, pk, team_pk):
+def manage(request, pk):
     owner = get_object_or_404(Owner, pk=pk)
-    team = get_object_or_404(Team, pk=team_pk)
-    team.owner = owner
-    team.save()
-    return redirect(owner)
-
-def drop(request, pk, team_pk):
-    owner = get_object_or_404(Owner, pk=pk)
-    team = get_object_or_404(Team, pk=team_pk)
-    team.owner = None
-    team.save()
+    if request.method == "POST":
+        if request.POST.pop('password') == 'reinhard':
+            for key in request.POST:
+                team = get_object_or_404(Team, pk=request.POST[key])
+                if team.owner == owner:
+                    team.owner = None
+                elif team.owner == None:
+                    team.owner = owner
+                team.save()
     return redirect(owner)

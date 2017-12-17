@@ -25,7 +25,7 @@ SECRET_KEY = '#16*3x44(^21$$4x6(-hd=qht()3amsh2@&r1*bm@@m^gj#dq('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['45.33.6.202', '*.omajoshi.com', 'dev.omajoshi.com', 'soccer.omajoshi.com']
+ALLOWED_HOSTS = ['45.33.6.202', '.omajoshi.com']
 
 
 # Application definition
