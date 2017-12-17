@@ -48,9 +48,11 @@ def owner_page(request, pk):
 def manage(request, pk):
     owner = get_object_or_404(Owner, pk=pk)
     if request.method == "POST":
-        if request.POST.pop('password') == 'reinhard':
-            for key in request.POST:
-                team = get_object_or_404(Team, pk=request.POST[key])
+        post = request.POST.dict()
+        post.pop('csrfmiddlewaretoken')
+        if post.pop('password') == 'reinhard':
+            for key in post:
+                team = get_object_or_404(Team, pk=key[1:])
                 if team.owner == owner:
                     team.owner = None
                 elif team.owner == None:
