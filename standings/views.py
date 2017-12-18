@@ -41,8 +41,7 @@ def standings(request):
 def owner_page(request, pk):
     owner = get_object_or_404(Owner, pk=pk)
     teams = Team.objects.annotate(
-        score=models.F('wins')*3+models.F('draws'),
-        goal_diff=models.F('goal_diff')
+        score=models.F('wins')*3+models.F('draws')
     ).order_by('-score', '-goal_diff')
     teams_you = teams.filter(owner=owner)
     teams_none = teams.filter(owner=None)
