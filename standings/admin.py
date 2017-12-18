@@ -9,14 +9,14 @@ class OwnerAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
         qs = super().get_queryset(request)
         qs = qs.annotate(
-            total_score=Sum('teams__wins')*3+Sum('teams__draws')+Sum('teams__goal_diff')
+            score=Sum('teams__wins')*3+Sum('teams__draws')+Sum('teams__goal_diff')
         )
         return qs
 
     def score(self, obj):
-        return obj.total_score
+        return obj.score
 
-    score.admin_order_field = "-total_score"
+    score.admin_order_field = "-score"
 
 class TeamAdmin(admin.ModelAdmin):
     list_display = ('name', 'league', 'record', 'goal_diff', 'points', 'score')

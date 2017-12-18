@@ -6,23 +6,49 @@
         <tr>
             <th>Name</th>
             <th>Score</th>
-            <th>Owner</th>
+            <th>Goal Differential</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td>Teams</td>
+            <td>Owned</td>
+            <td>By</td>
+            <td>You</td>
         </tr>
         {%for team in teams_you%}
         <tr>
             <td>{{team.name}}</td>
             <td>{{team.score}}</td>
+            <td>{{team.goal_diff}}</td>
             <td><input type="checkbox" form="manage" name="_{{team.pk}}" id="{{team.pk}}"><label for="{{team.pk}}">- Drop?</label></td>
+        </tr>
+        {%empty%}
+        <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
         </tr>
         {%endfor%}
         <tr>
-            <td></td><td></td><td></td>
+            <td>Teams</td>
+            <td>Owned</td>
+            <td>By</td>
+            <td>None</td>
         </tr>
         {%for team in teams_none%}
         <tr>
             <td>{{team.name}}</td>
             <td>{{team.score}}</td>
+            <td>{{team.goal_diff}}</td>
             <td><input type="checkbox" form="manage" name="_{{team.pk}}" id="{{team.pk}}"><label for="{{team.pk}}">+ Add?</label></td>
+        </tr>
+        {%empty%}
+        <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
         </tr>
         {%endfor%}
     </tbody>

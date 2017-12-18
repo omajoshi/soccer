@@ -5,11 +5,13 @@
         <tr>
             <th>Name</th>
             <th>Score</th>
+            <th>Goal Differential</th>
         </tr>
         {%for owner in owners%}
         <tr>
             <td><a href="{{owner.get_absolute_url}}">{{owner.name}}</a></td>
-            <td>{{owner.total_score}}</td>
+            <td>{{owner.score}}</td>
+            <td>{{owner.goal_diff}}</td>
         </tr>
         {%endfor%}
     </tbody>
